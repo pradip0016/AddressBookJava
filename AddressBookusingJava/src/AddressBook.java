@@ -65,16 +65,16 @@ public class AddressBook {
                     addressBookManager.deleteperson(fileName);
                     break;
                 case 4:
-                    addressBookManager.searchperson();
+                    addressBookManager.searchperson(fileName);
                     break;
                 case 5:
-                    addressBookManager.sortbyzipperson();
+                    addressBookManager.sortbyzipperson(fileName);
                     break;
                 case 6:
-                    addressBookManager.sortbynameperson();
+                    addressBookManager.sortbynameperson(fileName);
                     break;
                 case 7:
-                    addressBookManager.Display();
+                    addressBookManager.Display(fileName);
                     break;
                 case 8:
                     addressBookManager.editperson(fileNames);
