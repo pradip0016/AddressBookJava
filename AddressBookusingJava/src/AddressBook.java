@@ -62,7 +62,7 @@ public class AddressBook {
                     addressBookManager.savedata(key,personarraylist17);
                     break;
                 case 3:
-                    addressBookManager.deleteperson();
+                    addressBookManager.deleteperson(fileName);
                     break;
                 case 4:
                     addressBookManager.searchperson();
