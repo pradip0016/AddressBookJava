@@ -1,6 +1,11 @@
+import java.io.IOException;
+import  java.util.*;
+
 public interface AddressBookInterface {
 
-    public String  addperson() ;
+    public HashMap<String, ArrayList<Person>>  addperson(String filename);
+
+    public void savedata(String key,ArrayList<Person> personarraylist17) throws IOException;
 
     public String editperson() ;
 
