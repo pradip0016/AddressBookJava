@@ -27,7 +27,7 @@ public class AddressBookManager implements AddressBookInterface {
 
     @Override
     public HashMap<String, ArrayList<Person>> addperson(String fileName) {
-        System.out.println("How many data want to save in AddressBook :" + fileName);
+        System.out.println("How many data do you want to save in AddressBook :" + fileName);
         int n = sc.nextInt();
         for (int i = 1; i <= n; i++) {
             System.out.println("Enter First Name :");
