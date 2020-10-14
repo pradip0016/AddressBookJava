@@ -163,8 +163,45 @@ public class AddressBookManager implements AddressBookInterface {
         }
 
         @Override
-        public String sortbyzipperson (String fileName) {
+        public String sortbyzipperson (String fileName) throws IOException,FileNotFoundException {
+            File inFile = new File((path + fileName + ".csv"));
+            File inFile2 = new File((path + fileName + "SortByzip.csv"));
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            ArrayList<Person> lines2 = new ArrayList<Person>();
+            String currentLine1 = reader.readLine();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(inFile2));
+            writer.write(currentLine1);
+            writer.newLine();
+            String currentLine = reader.readLine();
+            while (currentLine != null) {
+                String[] persondrtails = currentLine.split(",");
+                String firstname = persondrtails[0];
+                String lastname = persondrtails[1];
+                String city = persondrtails[2];
+                String state = persondrtails[3];
+                int zipcode = Integer.valueOf(persondrtails[4]);
+                String phonenumber = persondrtails[5];
+                lines2.add(new Person(firstname, lastname, city, state, zipcode, phonenumber));
+                currentLine = reader.readLine();
+            }
+            Collections.sort(lines2, new SortByzip());
+            System.out.println("Data after Sort By Zip: ");
+            for (Person P : lines2) {
+                System.out.println(P.getFirstname() + " " + P.getLastname() + " " + P.getCity() + " " + P.getState() + " "
+                        + P.getZipcode() + " " + P.getPhonenumber());
+                writer.write(P.firstname);
+                writer.write("," + P.lastname);
+                writer.write("," + P.city);
+                writer.write("," + P.state);
+                writer.write("," + P.zipcode);
+                writer.write("," + P.phonenumber);
+                writer.newLine();
+            }
+            System.out.println("");
+            writer.close();
+            reader.close();
             return null;
+
         }
 
         @Override

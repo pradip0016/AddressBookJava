@@ -13,7 +13,7 @@ public interface AddressBookInterface {
 
     public String searchperson(String fileName) ;
 
-    public String sortbyzipperson(String fileName) ;
+    public String sortbyzipperson(String fileName) throws   IOException,FileNotFoundException;
 
     public String sortbynameperson(String fileName) throws FileNotFoundException, IOException;
 
