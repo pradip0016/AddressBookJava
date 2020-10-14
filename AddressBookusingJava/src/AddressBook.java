@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 public class AddressBook {
     public static Scanner sc = new Scanner(System.in);
-    public static String fileName;
+    public static String fileNames;
     public static String path = "E:\\Pradip\\CSV\\";
     public static String key;
     public FileReader fr;
@@ -18,20 +18,15 @@ public class AddressBook {
         AddressBookManager addressBookManager = new AddressBookManager();
         System.out.println("_______WELCOME TO ADDRESS_BOOK_______");
         System.out.print("Enter the desired name of your Book: ");
-        fileName = sc.next();
-        fileName = fileName + ".csv";
-        file = new File(path + fileName);
-            File f = new File(path);
-            String[] s = f.list();
-            for (String s1 : s) {
-                if (fileName.equalsIgnoreCase(s1))
-
-                flag++;
-            }
-            if(flag>0) {
-                System.out.println("AddressBook Already Present");
-            }
-            else {
+        fileNames = sc.next();
+        String fileName = fileNames + ".csv";
+        file = new File(path + fileName + ".csv");
+        if(file.isFile())
+        {
+            System.out.println("file already Present");
+        }
+        else
+        {
                 file.createNewFile();
                 fileWriter = new FileWriter(file, true);
                 bw = new BufferedWriter(fileWriter);
@@ -43,8 +38,8 @@ public class AddressBook {
                 bw.write(",Phonenumber");
                 bw.newLine();
                 System.out.println("Address Book Created ");
-        bw.close();
-        fileWriter.close();
+                bw.close();
+                fileWriter.close();
 
     }
 
@@ -82,7 +77,7 @@ public class AddressBook {
                     addressBookManager.Display();
                     break;
                 case 8:
-                    addressBookManager.editperson();
+                    addressBookManager.editperson(fileNames);
                     break;
                 default:
                     System.out.println("Wrong Choice Entered Thank You....");
